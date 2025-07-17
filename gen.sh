@@ -1,4 +1,4 @@
-LUAVER=5.4.7
+LUAVER=5.4.8
 LUADIR=lua-$LUAVER
 LUAPKG=lua-$LUAVER.tar.gz
 LUAURL=https://www.lua.org/ftp/$LUAPKG
@@ -113,7 +113,7 @@ echo "#ifdef LUA_IMPL" >> $OUTFILE
   cat $LUADIR/src/ltable.c >> $OUTFILE
   cat $LUADIR/src/ldo.c >> $OUTFILE
   cat $LUADIR/src/lvm.c >> $OUTFILE
-  sed -i "/#include \"ljumptab.h\"/r $LUADIR/src/ljumptab.h" $OUTFILE
+  sed -i '' "/#include \"ljumptab.h\"/r $LUADIR/src/ljumptab.h" $OUTFILE
   cat $LUADIR/src/lapi.c >> $OUTFILE
   cat $LUADIR/src/lauxlib.c >> $OUTFILE
   cat $LUADIR/src/lbaselib.c >> $OUTFILE
@@ -141,7 +141,7 @@ cat $LUADIR/src/lua.c >> $OUTFILE
 echo "#endif /* LUA_MAKE_LUA */" >> $OUTFILE
 
 # Comment all include headers
-sed -i 's/#include "\([^"]*\)"/\/\*#include "\1"\*\//' $OUTFILE
+sed -i '' 's/#include "\([^"]*\)"/\/\*#include "\1"\*\//' $OUTFILE
 
 cat <<EOF >> $OUTFILE
 
